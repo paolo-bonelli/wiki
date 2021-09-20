@@ -1,0 +1,23 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia - Create
+{% endblock %}
+
+{% block body %}
+
+{% for formError in errors %}
+<div class="alert alert-danger">
+  {{ formError }}
+</div>
+{% endfor %}
+
+<h2>Add a new entry</h2>
+
+<form action="{% url 'create' %}" method="POST">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Save">
+</form>
+
+{% endblock %}

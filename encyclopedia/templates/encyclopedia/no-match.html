@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+Encyclopedia - No match
+{% endblock %}
+
+{% block body %}
+
+<h2>No Match</h2>
+<p>The Article "{{ query }}" you are looking for does not <b>yet</b> exist.</p>
+<a href="{% url 'create' %}">Create it!</a>
+
+{% if results %}
+
+<p>Or perhaps you are looking for...</p>
+
+<ul>
+  {% for entry in results %}
+  <li><a href="{% url 'single' entry.title %}"> {{ entry.title }} </a></li>
+  {% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}
